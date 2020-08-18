@@ -427,7 +427,7 @@ class _History extends State<History> {
   @override
   Widget build(BuildContext context) {
     return new Center(
-      child: Text('这是一个即将完善的历史记录的面板'),
+      child: Text('请输入你需要搜索的组件widget'),
     );
   }
 }

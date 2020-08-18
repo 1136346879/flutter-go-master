@@ -50,15 +50,16 @@ class _WidgetDemoState extends State<WidgetDemo> {
         height: 10.0,
       ),
     ];
+    //集合  上个页面传输过来
     widget.contentList.forEach((item) {
-      if (item.runtimeType == String) {
+      if (item.runtimeType == String) {// ---string  就用 markdown展示
         _list.add(MarkdownBody(item));
         _list.add(
           SizedBox(
             height: 20.0,
           ),
         );
-      } else {
+      } else {//widget  直接添加
         _list.add(item);
       }
     });
@@ -93,8 +94,8 @@ class _WidgetDemoState extends State<WidgetDemo> {
             _hasCollected = false;
           });
           _scaffoldKey.currentState
-              .showSnackBar(SnackBar(content: Text('已取消收藏')));
-          if (ApplicationEvent.event != null) {
+              .showSnackBar(SnackBar(content: Text('已取消收藏')));//底部toast
+          if (ApplicationEvent.event != null) {//删除成功后  发出通知
             ApplicationEvent.event
                 .fire(CollectionEvent(widget.title, _router, true));
           }
@@ -112,7 +113,7 @@ class _WidgetDemoState extends State<WidgetDemo> {
             _hasCollected = true;
           });
 
-          if (ApplicationEvent.event != null) {
+          if (ApplicationEvent.event != null) {//插入成功后  发出通知
             ApplicationEvent.event
                 .fire(CollectionEvent(widget.title, _router, false));
           }
@@ -147,21 +148,22 @@ class _WidgetDemoState extends State<WidgetDemo> {
         appBar: AppBar(
           title: Text(widget.title),
           actions: <Widget>[
-            new IconButton(
+            new IconButton(//图标按钮
               tooltip: 'goBack home',
               onPressed: () {
-                Navigator.popUntil(context, ModalRoute.withName('/home'));
+//                Navigator.popUntil(context, ModalRoute.withName('/home'));
+              _goHomePage(context);
               },
               icon: Icon(Icons.home),
             ),
-            new IconButton(
+            new IconButton(//图标按钮
               tooltip: 'collection',
               onPressed: _getCollection,
               icon: Icon(_collectionIcons),
             ),
             PopupMenuButton<String>(
               onSelected: _selectValue,
-              itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[
+              itemBuilder: (BuildContext context) => <PopupMenuEntry<String>>[//弹框
                     const PopupMenuItem<String>(
                       value: 'doc',
                       child: ListTile(
@@ -172,7 +174,7 @@ class _WidgetDemoState extends State<WidgetDemo> {
                         title: Text('查看文档'),
                       ),
                     ),
-                    const PopupMenuDivider(),
+                    const PopupMenuDivider(),//分割线
                     const PopupMenuItem<String>(
                       value: 'code',
                       child: ListTile(
@@ -190,7 +192,8 @@ class _WidgetDemoState extends State<WidgetDemo> {
         body: Container(
           padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 15.0),
           child: ListView(
-            shrinkWrap: true,
+            shrinkWrap: true,//为true可以解决子控件必须设置高度的问题
+//            physics:NeverScrollableScrollPhysics(),//禁用滑动事件
             padding: const EdgeInsets.all(0.0),
             children: <Widget>[
               Column(
@@ -204,5 +207,8 @@ class _WidgetDemoState extends State<WidgetDemo> {
 
   }
 
-
+  _goHomePage(context) {
+    Navigator.of(context)
+        .pushNamedAndRemoveUntil('/home', (Route<dynamic> route) => false);
+  }
 }

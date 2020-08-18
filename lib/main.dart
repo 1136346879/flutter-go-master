@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
       home: new Scaffold(
         body: showWelcomePage()
       ),
-      onGenerateRoute: Application.router.generator,
+      onGenerateRoute: Application.router.generator,//?
     );
   }
 }

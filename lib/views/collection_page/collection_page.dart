@@ -33,7 +33,7 @@ class _CollectionPageState extends State<CollectionPage> {
   void initState() {
     super.initState();
     _getList();
-    ApplicationEvent.event.on<CollectionEvent>().listen((event) {
+    ApplicationEvent.event.on<CollectionEvent>().listen((event) {//接收到通知后，查询数据库数据
       _getList();
     });
   }

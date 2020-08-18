@@ -7,6 +7,7 @@
  * tartget: OutlineButton 的示例
  */
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart' as ToastUtils;
 
 /*
 * OutlineButton 默认按钮的实例
@@ -26,7 +27,9 @@ class FloatingActionButtonDefault extends StatelessWidget {
         backgroundColor:Colors.red,
         child: const Icon(Icons.add),
         heroTag: null, // 不加这个参数会黑屏...
-        onPressed: isDisabled ? () {} : null);
+        onPressed: isDisabled ? () {
+          ToastUtils.Fluttertoast.showToast(msg: "点击了");
+        } : null);
   }
 }
 
