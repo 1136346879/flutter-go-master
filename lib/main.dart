@@ -14,7 +14,7 @@ var db;
 
 class MyApp extends StatelessWidget {
   MyApp()  {
-    final router = new Router();
+    final router = new FluroRouter();
     Routes.configureRoutes(router);
     Application.router = router;
   }
@@ -54,6 +54,7 @@ class MyApp extends StatelessWidget {
 
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   final provider = new Provider();
   await provider.init(true);
   sp = await SpUtil.getInstance();

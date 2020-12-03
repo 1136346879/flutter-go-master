@@ -11,7 +11,7 @@ class Routes {
   static String codeView = '/code-view';
   static String webViewPage = '/web-view-page';
 
-  static void configureRoutes(Router router) {
+  static void configureRoutes(FluroRouter router) {
     List widgetDemosList = new WidgetDemoList().getDemos();
     router.notFoundHandler = new Handler(
         handlerFunc: (BuildContext context, Map<String, List<String>> params) {

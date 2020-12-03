@@ -95,14 +95,14 @@ class FourthPageState extends State<FourthPage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return new Stack(
       children: [
-        new Page(
+        new Pages(
           // page 的主要内容
           viewModel: pages[activeIndex],
           percentVisible: 1.0,
         ),
         new PageReveal(
           revealPercent: slidePercent,
-          child: new Page(
+          child: new Pages(
             viewModel: pages[nextPageIndex],
             percentVisible: slidePercent,
           ),

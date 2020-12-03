@@ -32,10 +32,10 @@ final pages = [
 ];
 SpUtil sp;
 
-class Page extends StatelessWidget {
+class Pages extends StatelessWidget {
   final PageViewModel viewModel;
   final double percentVisible;
-  Page({
+  Pages({
     this.viewModel,
     this.percentVisible = 1.0,
   });

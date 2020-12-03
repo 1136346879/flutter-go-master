@@ -2,7 +2,7 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_go/utils/shared_preferences.dart';
 class Application {
-  static Router router;
+  static FluroRouter router;
   static TabController controller;
   static SpUtil sharePeferences;
 

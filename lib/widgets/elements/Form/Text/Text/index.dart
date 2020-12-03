@@ -20,7 +20,6 @@ const String intro = """
 - textScaleFactor	文本的缩放比例	double
 - style	用于指定文本显示的样式如颜色、字体、粗细、背景等
 
-
 ### **基本示例**
 
 """;
